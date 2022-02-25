@@ -1,0 +1,45 @@
+{
+    "fullScreen": {
+        "enable": true,
+        "zIndex": -1
+    },
+    "fpsLimit": 120,
+    "particles": {
+        "number": {
+            "value": 120,
+            "density": {
+                "enable": true,
+                "value_area": 1200
+            }
+        },
+        "color": {
+            "value": "#ffffff"
+        },
+        "opacity": {
+            "value": 0.75
+        },
+        "size": {
+            "value": {
+                "min": 1,
+                "max": 4
+            }
+        },
+        "move": {
+            "enable": true,
+            "speed": 50,
+            "direction": "left",
+            "outModes": {
+                "default": "out"
+            },
+            "straight": true,
+            "trail": {
+                "enable": true,
+                "fillColor": "#111827",
+                "length": 2
+            }
+        }
+    },
+    "background": {
+        "color": "#111827"
+    }
+}

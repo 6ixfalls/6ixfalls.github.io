@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build"
+    "build": "cross-env NODE_ENV=production vite build",
+    "deploy": "rmdir /s /q dist && npm run build && cd dist && git init && git add . && git commit -m \"Deploy Changes\" && git remote add origin https://github.com/6ixfalls/6ixfalls.github.io.git && git push --force origin master:gh-pages"
   },
   "dependencies": {
+    "particles.vue3": "^1.41.5",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
   },
