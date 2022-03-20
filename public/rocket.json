@@ -1,4 +1,7 @@
 {
+    "autoPlay": false,
+    "pauseOnOutsideViewport": false,
+    "pauseOnBlur": false,
     "fullScreen": {
         "enable": true,
         "zIndex": -1
@@ -25,13 +28,18 @@
             }
         },
         "move": {
+            "angle": {
+                "value": 2,
+                "offset": 0
+            },
             "enable": true,
             "speed": 50,
             "direction": "left",
             "outModes": {
                 "default": "out"
             },
-            "straight": true,
+            "random": false,
+            "straight": false,
             "trail": {
                 "enable": true,
                 "fillColor": "#111827",

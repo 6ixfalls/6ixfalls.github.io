@@ -7,7 +7,7 @@
           text-transparent
           bg-clip-text bg-gradient-to-r
           from-sky-500
-          to-sky-400
+          to-sky-300
           bg-400%
           animate-gradient-y
         "
@@ -18,44 +18,48 @@
       >Developer & Programmer for 3+ years.</a
     >
 
-    <a href="//github.com/6ixfalls">
-      <button
-        type="button"
-        class="
-          flex
-          items-center
-          mt-10
-          ml-12
-          px-4
-          py-2
-          font-semibold
-          leading-6
-          text-sm
-          shadow
-          rounded-md
-          text-sky-500
-          bg-gray-800
-        "
-        id="--see-more"
-      >
-        See More <i class="fa-solid fa-chevron-right pl-3"></i>
-      </button>
-    </a>
+    <button
+      type="button"
+      class="
+        flex
+        mt-10
+        ml-12
+        items-center
+        px-4
+        py-2
+        font-semibold
+        leading-6
+        text-sm
+        shadow-2xl
+        rounded-md
+        text-sky-500
+        bg-gray-850
+      "
+      id="see-more"
+      @click="seeMore"
+    >
+      See More <i class="fa-solid fa-chevron-right pl-3 inline"></i>
+    </button>
   </div>
 
-  <div
-    class="fixed w-full h-full top-[5.5rem] left-0 z-[-1] hidden animate-shake"
-  >
+  <div class="fixed w-full h-screen top-0 left-0 z-[-1]">
     <Particles
       id="tsparticles"
-      :particlesInit="particlesInit"
-      :particlesLoaded="particlesLoaded"
+      :particlesLoaded="particlesInit"
       url="rocket.json"
     ></Particles>
   </div>
 </template>
 
 <script>
+import { tsParticles } from "tsparticles";
+
+const wait = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+};
+
 const checkElement = async (selector) => {
   while (document.querySelector(selector) === null) {
     await new Promise((resolve) => {
@@ -65,9 +69,25 @@ const checkElement = async (selector) => {
   return document.querySelector(selector);
 };
 
-var tsp = checkElement("#tsparticles");
-tsp.style =
-  "width: 100% !important; height: 100% !important; position: fixed !important; z-index: -1 !important; top: 0px !important; left: 0px !important; background-color: rgba(0, 0, 0, 0); pointer-events: none;";
-
-export default {};
+export default {
+  methods: {
+    particlesInit(part) {
+      part.canvas.element.parentNode.parentNode.style.setProperty(
+        "display",
+        "none"
+      );
+    },
+    seeMore() {
+      const particles = tsParticles.domItem(0);
+      const partContainer = particles.canvas.element.parentNode.parentNode;
+      partContainer.style.setProperty("display", "block");
+      partContainer.classList.add("_transition-left-slide");
+      particles.refresh();
+      particles.play();
+      setTimeout(() => {
+        partContainer.classList.add("animate-shake");
+      }, 2500);
+    },
+  },
+};
 </script>
