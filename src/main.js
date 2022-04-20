@@ -3,7 +3,9 @@ import './assets/main.css'
 import App from './App.vue'
 import { routes } from './routes.js'
 import { createRouter, createWebHistory } from 'vue-router'
-import Particles from "particles.vue3"
+import { TroisJSVuePlugin } from 'troisjs'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 let app = createApp(App)
 let router = createRouter({
@@ -30,6 +32,7 @@ if (import.meta.hot) {
 
 
 app.use(router)
-app.use(Particles)
+app.use(TroisJSVuePlugin)
+app.use(VueAxios, axios)
 
 app.mount('#app')

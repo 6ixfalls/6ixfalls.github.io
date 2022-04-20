@@ -36,3 +36,21 @@
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
+
+.canvas-blur {
+    filter: blur(0.5em) brightness(30%);
+}
+
+.canvas-unblur {
+    animation: 1s ease-out 0s 1 canvasUnblur;
+}
+
+@keyframes canvasUnblur {
+    0% {
+        filter: blur(0.5em) brightness(30%);
+    }
+
+    100% {
+        filter: blur(0) brightness(100%);
+    }
+}

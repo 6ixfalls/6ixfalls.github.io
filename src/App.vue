@@ -47,6 +47,7 @@
     </router-view>
   </div>
 
+  <!--
   <footer
     class="
       border-t border-gray-700
@@ -104,7 +105,7 @@
         reserved.</a
       >
     </div>
-  </footer>
+  </footer>-->
 
   <!--
   <div
