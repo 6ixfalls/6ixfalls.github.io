@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "cross-env NODE_ENV=production vite build",
-    "deploy": "rmdir /s /q dist && npm run build && cd dist && git init && git add . && git commit -m \"Deploy: `date +\"%Y-%m-%d %H:%M:%S\"`\" && git remote add origin https://github.com/6ixfalls/6ixfalls.github.io.git && git push --force origin master:gh-pages"
+    "deploy": "rmdir /s /q dist && npm run build && cd dist && git init && git add . && git commit -m \"Deploy Changes\" && git remote add origin https://github.com/6ixfalls/6ixfalls.github.io.git && git push --force origin master:gh-pages"
   },
   "dependencies": {
     "axios": "^0.26.1",

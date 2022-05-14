@@ -25,9 +25,13 @@ module.exports = {
           900: '#111827',
         }
       },
+      transitionProperty: {
+        'popup': 'transform, opacity',
+      },
       animation: {
         'gradient-y': 'gradient-y 5s ease infinite',
         'shake': 'shake 0.5s ease infinite',
+        'arrow': 'arrow 1s infinite',
       },
       keyframes: {
         'gradient-y': {
@@ -54,6 +58,10 @@ module.exports = {
           '90%': { transform: 'translate(1px, 2px) rotate(0deg)' },
           '100%': { transform: 'translate(1px, -2px) rotate(-1deg)' }
         },
+        'arrow': {
+          '0%,100%': { transform: 'translateX(0);', 'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1);' },
+          '50%': { transform: 'translateX(25%);', 'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1);' },
+        }
       },
       backgroundSize: {
         '400%': '400%',

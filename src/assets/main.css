@@ -30,6 +30,27 @@
     }
 }
 
+@font-face {
+    font-family: "Icomoon Icons";
+    src: url("fonts/icomoon.woff") format("woff"), url("fonts/icomoon.ttf") format("truetype"), url("fonts/icomoon.eot") format("embedded-opentype");
+}
+
+.custom-fa {
+    font-family: "Icomoon Icons";
+    font-weight: 400;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1px;
+    font-size: 30px;
+    text-rendering: auto;
+    vertical-align: -0.275em;
+}
+
+.custom-fa-roblox:before {
+    content: "\e900";
+}
+
 .highlight-under {
     display: inline;
     border-bottom: 2px solid rgba(161, 161, 170, 1);
@@ -43,6 +64,25 @@
 
 .canvas-unblur {
     animation: 1s ease-out 0s 1 canvasUnblur;
+}
+
+.arrow {
+    border-bottom-color: #121930 !important;
+    border: 5px solid transparent;
+}
+
+.tooltip {
+    background-color: #121930;
+    box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.24);
+}
+
+.tooltip.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.filter-hover:hover {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(85%) saturate(367%) hue-rotate(180deg) brightness(88%) contrast(92%);
 }
 
 @keyframes canvasUnblur {

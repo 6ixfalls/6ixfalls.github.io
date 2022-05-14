@@ -21,6 +21,7 @@
     <button
       type="button"
       class="
+        group
         flex
         mt-10
         ml-12
@@ -38,7 +39,16 @@
       id="see-more"
       @click="seeMore"
     >
-      See More <i class="fa-solid fa-chevron-right pl-3 inline"></i>
+      See More
+      <i
+        class="
+          fa-solid fa-chevron-right
+          pl-3
+          inline
+          transition-transform
+          group-hover:animate-arrow
+        "
+      ></i>
     </button>
   </div>
 
@@ -48,13 +58,7 @@
     class="top-0 left-0 absolute z-[-1] canvas-blur"
   >
     <Camera ref="camera" :position="{ z: 20 }" />
-    <Scene>
-      <Box>
-        <LambertMaterial />
-      </Box>
-
-      <FbxModel src="map.fbx" @load="onMapReady" />
-    </Scene>
+    <Scene> </Scene>
   </Renderer>
 </template>
 
@@ -157,6 +161,61 @@ const getRobloxHash = (hash) => {
   return `https://t${(i % 8).toString()}.rbxcdn.com/${hash}`;
 };
 
+// interactive elements ui
+const raycaster = new THREE.Raycaster();
+
+const mouse = new THREE.Vector2();
+mouse.x = mouse.y = null;
+
+let selectState = false;
+
+window.addEventListener("pointermove", (event) => {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+window.addEventListener("pointerdown", () => {
+  selectState = true;
+});
+
+window.addEventListener("pointerup", () => {
+  selectState = false;
+});
+
+window.addEventListener("touchstart", (event) => {
+  selectState = true;
+  mouse.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
+});
+
+window.addEventListener("touchend", () => {
+  selectState = false;
+  mouse.x = null;
+  mouse.y = null;
+});
+//
+
+const objsToTest = [];
+
+const raycast = () => {
+  return objsToTest.reduce((closestIntersection, obj) => {
+    const intersection = raycaster.intersectObject(obj, true);
+
+    if (!intersection[0]) return closestIntersection;
+
+    if (
+      !closestIntersection ||
+      intersection[0].distance < closestIntersection.distance
+    ) {
+      intersection[0].object = obj;
+
+      return intersection[0];
+    }
+
+    return closestIntersection;
+  }, null);
+};
+
 var controls;
 
 export default {
@@ -195,7 +254,38 @@ export default {
     onResize() {
       this.$refs.renderer.three.setSize(window.innerWidth, window.innerHeight);
     },
-    onMapReady(map) {},
+    updateButtons(camera) {
+      // Find closest intersecting object
+
+      let intersect;
+
+      if (mouse.x !== null && mouse.y !== null) {
+        raycaster.setFromCamera(mouse, camera);
+
+        intersect = raycast();
+      }
+
+      // Update targeted button state (if any)
+
+      if (intersect && intersect.object.isUI) {
+        if (selectState) {
+          // Component.setState internally call component.set with the options you defined in component.setupState
+          intersect.object.setState("selected");
+        } else {
+          // Component.setState internally call component.set with the options you defined in component.setupState
+          intersect.object.setState("hovered");
+        }
+      }
+
+      // Update non-targeted buttons state
+
+      objsToTest.forEach((obj) => {
+        if ((!intersect || obj !== intersect.object) && obj.isUI) {
+          // Component.setState internally call component.set with the options you defined in component.setupState
+          obj.setState("idle");
+        }
+      });
+    },
   },
   async mounted() {
     const renderer = this.$refs.renderer;
@@ -259,8 +349,9 @@ export default {
 
     const container = new ThreeMeshUI.Block({
       width: 1.2,
-      height: 0.7,
+      height: 1.8,
       padding: 0.2,
+      borderRadius: 0.1,
       fontFamily: "./Roboto-msdf.json",
       fontTexture: "./Roboto-msdf.png",
     });
@@ -269,7 +360,69 @@ export default {
       content: "Some text to be displayed",
     });
 
+    // buttons
+    // We start by creating objects containing options that we will use with the two buttons,
+    // in order to write less code.
+
+    const buttonOptions = {
+      width: 0.4,
+      height: 0.15,
+      justifyContent: "center",
+      offset: 0.05,
+      margin: 1.2,
+      borderRadius: 0.08,
+    };
+
+    // Options for component.setupState().
+    // It must contain a 'state' parameter, which you will refer to with component.setState( 'name-of-the-state' ).
+
+    const hoveredStateAttributes = {
+      state: "hovered",
+      attributes: {
+        offset: 0.035,
+        backgroundColor: new THREE.Color(0x999999),
+        backgroundOpacity: 1,
+        fontColor: new THREE.Color(0xffffff),
+      },
+    };
+
+    const idleStateAttributes = {
+      state: "idle",
+      attributes: {
+        offset: 0.035,
+        backgroundColor: new THREE.Color(0x666666),
+        backgroundOpacity: 0.3,
+        fontColor: new THREE.Color(0xffffff),
+      },
+    };
+
+    const selectedAttributes = {
+      offset: 0.02,
+      backgroundColor: new THREE.Color(0x777777),
+      fontColor: new THREE.Color(0x222222),
+    };
+
+    const buttonNext = new ThreeMeshUI.Block(buttonOptions);
+    buttonNext.add(
+      new ThreeMeshUI.Text({
+        content: "Next",
+      })
+    );
+
+    buttonNext.setupState({
+      state: "selected",
+      attributes: selectedAttributes,
+      onSet: () => {
+        // do something on click
+      },
+    });
+    buttonNext.setupState(hoveredStateAttributes);
+    buttonNext.setupState(idleStateAttributes);
+
     container.add(text);
+    container.add(buttonNext);
+
+    objsToTest.push(buttonNext);
 
     container.position.set(-4, 2, 6);
     renderer.three.scene.add(container);
@@ -300,7 +453,7 @@ export default {
 
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(window.innerWidth, window.innerHeight),
-      0.6,
+      0.5,
       1,
       0.85
     );
@@ -326,6 +479,8 @@ export default {
       controls.update();
       ThreeMeshUI.update();
       TWEEN.update();
+
+      this.updateButtons(renderer.three.camera);
     });
 
     // resize monitor

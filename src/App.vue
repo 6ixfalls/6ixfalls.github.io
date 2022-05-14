@@ -20,7 +20,12 @@
               custom
               v-slot="{ navigate, href }"
             >
-              <a :href="href" @click="navigate" class="px-5">{{ link.text }}</a>
+              <a
+                :href="href"
+                @click="navigate"
+                class="px-5 transition-colors hover:text-gray-400"
+                >{{ link.text }}</a
+              >
             </router-link>
           </div>
           <div>
@@ -31,11 +36,10 @@
               custom
               v-slot="{ href }"
             >
-              <a :href="href" class="px-2"><i :class="contact.icon"></i></a>
+              <a :href="href" class="px-2 transition-colors hover:text-gray-400"
+                ><i :class="contact.icon"></i
+              ></a>
             </router-link>
-            <a href="//www.roblox.com/users/193632792/profile" class="px-1"
-              ><img src="/img/RobloxLogo.svg" class="h-[2em] inline"
-            /></a>
           </div>
         </div>
       </div>
@@ -133,8 +137,10 @@
 
 <script>
 import { defineComponent } from "vue";
+import Popup from "./views/components/Popup.vue";
 
 export default defineComponent({
+  components: { Popup },
   data: () => ({
     showMenu: false,
     showProfileMenu: false,
@@ -152,6 +158,11 @@ export default defineComponent({
         text: "Discord",
         icon: "fa-brands fa-discord fa-xl",
         to: "//discord.com/users/303173495918034945",
+      },
+      {
+        text: "Roblox",
+        icon: "custom-fa custom-fa-roblox fa-2xl",
+        to: "//www.roblox.com/users/193632792/profile",
       },
     ],
     footerpages: [
