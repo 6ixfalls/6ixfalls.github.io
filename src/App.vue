@@ -137,10 +137,8 @@
 
 <script>
 import { defineComponent } from "vue";
-import Popup from "./views/components/Popup.vue";
 
 export default defineComponent({
-  components: { Popup },
   data: () => ({
     showMenu: false,
     showProfileMenu: false,

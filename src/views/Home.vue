@@ -69,6 +69,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { BasisTextureLoader } from "three/examples/jsm/loaders/BasisTextureLoader";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
@@ -290,6 +291,18 @@ export default {
   async mounted() {
     const renderer = this.$refs.renderer;
 
+    const basisLoader = new BasisTextureLoader();
+    basisLoader.setTranscoderPath(
+      "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/libs/basis/"
+    );
+    basisLoader.detectSupport(renderer.three.renderer);
+
+    const loadBasis = function (url) {
+      return new Promise((resolve, reject) => {
+        basisLoader.load(url, (data) => resolve(data), null, reject);
+      });
+    };
+
     controls = new OrbitControls(
       renderer.three.camera,
       renderer.three.renderer.domElement
@@ -298,6 +311,18 @@ export default {
     renderer.three.setSize(window.innerWidth, window.innerHeight);
     renderer.three.renderer.shadowMap.enabled = true;
     renderer.three.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    // TODO: make it work with basis format
+    const loader = new THREE.CubeTextureLoader();
+    const texture = loader.load([
+      "anime_background/source/px.png",
+      "anime_background/source/nx.png",
+      "anime_background/source/py.png",
+      "anime_background/source/ny.png",
+      "anime_background/source/pz.png",
+      "anime_background/source/nz.png",
+    ]);
+    renderer.three.scene.background = texture;
 
     controls.enabled = false;
     controls.enableDamping = true;
