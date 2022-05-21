@@ -8,7 +8,7 @@
     "deploy": "node deploy"
   },
   "dependencies": {
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "three": "^0.134.0",
     "three-mesh-ui": "^6.4.2",
     "troisjs": "^0.3.4",
