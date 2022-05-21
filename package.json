@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "three": "^0.134.0",
-    "three-mesh-ui": "^6.4.2",
+    "three-mesh-ui": "^6.4.3",
     "troisjs": "^0.3.4",
     "vue": "^3.2.31",
     "vue-axios": "^3.4.1",
