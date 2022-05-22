@@ -32,7 +32,7 @@
 
 @font-face {
     font-family: "Icomoon Icons";
-    src: url("fonts/icomoon.woff") format("woff"), url("fonts/icomoon.ttf") format("truetype"), url("fonts/icomoon.eot") format("embedded-opentype");
+    src: url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.ttf") format("truetype"), url("../fonts/icomoon.eot") format("embedded-opentype");
 }
 
 .custom-fa {
