@@ -9,24 +9,24 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "three": "^0.134.0",
-    "three-mesh-ui": "^6.4.2",
+    "three": "^0.140.2",
+    "three-mesh-ui": "^6.4.4",
     "troisjs": "^0.3.4",
-    "vue": "^3.2.32",
+    "vue": "^3.2.36",
     "vue-axios": "^3.4.1",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.2",
-    "@vue/compiler-sfc": "^3.2.31",
-    "autoprefixer": "^10.4.2",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/compiler-sfc": "^3.2.36",
+    "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
     "moment": "^2.29.3",
-    "postcss": "^8.4.6",
+    "postcss": "^8.4.14",
     "tailwindcss": "^2.2.19",
-    "vite": "^2.8.4"
+    "vite": "^2.9.9"
   },
   "resolutions": {
-    "postcss": "^8.4.6"
+    "postcss": "^8.4.14"
   }
 }
