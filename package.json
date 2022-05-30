@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "three": "^0.140.2",
+    "three": "^0.141.0",
     "three-mesh-ui": "^6.4.4",
     "troisjs": "^0.3.4",
     "vue": "^3.2.36",
