@@ -1249,10 +1249,10 @@ three-mesh-ui@^6.4.4:
   resolved "https://registry.npmjs.org/three-mesh-ui/-/three-mesh-ui-6.4.4.tgz"
   integrity sha512-Inzndir7UUQTl7U7isPMQa2H0jCv2G7RgcX3HVMoF5PSrbStAzayLtI6P9tK9rEkcQdehQfGHwpZVxghhuS77Q==
 
-three@^0.141.0:
-  version "0.141.0"
-  resolved "https://registry.npmjs.org/three/-/three-0.141.0.tgz"
-  integrity sha512-JaSDAPWuk4RTzG5BYRQm8YZbERUxTfTDVouWgHMisS2to4E5fotMS9F2zPFNOIJyEFTTQDDKPpsgZVThKU3pXA==
+three@^0.142.0:
+  version "0.142.0"
+  resolved "https://registry.npmjs.org/three/-/three-0.142.0.tgz"
+  integrity sha512-ESjPO+3geFr+ZUfVMpMnF/eVU2uJPOh0e2ZpMFqjNca1wApS9lJb7E4MjwGIczgt9iuKd8PEm6Pfgp2bJ92Xtg==
 
 tmp@^0.2.1:
   version "0.2.1"
@@ -1283,10 +1283,10 @@ util-deprecate@^1.0.2:
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-vite@^2.9.12:
-  version "2.9.12"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.9.12.tgz"
-  integrity sha512-suxC36dQo9Rq1qMB2qiRorNJtJAdxguu5TMvBHOc/F370KvqAe9t48vYp+/TbPKRNrMh/J55tOUmkuIqstZaew==
+vite@^2.9.13:
+  version "2.9.13"
+  resolved "https://registry.npmjs.org/vite/-/vite-2.9.13.tgz"
+  integrity sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==
   dependencies:
     esbuild "^0.14.27"
     postcss "^8.4.13"
