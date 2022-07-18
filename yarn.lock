@@ -1300,10 +1300,10 @@ vue-axios@^3.4.1:
   resolved "https://registry.npmjs.org/vue-axios/-/vue-axios-3.4.1.tgz"
   integrity sha512-8YZYUOQrBEJktxoQtrM4rr2LfVcDaWfJqv8MqtLlgLlkuBvCYKFSZSo6AXQ4YcCzdgccDqstmuaEh68lcH9xWA==
 
-vue-router@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.1.1.tgz"
-  integrity sha512-Wp1mEf2xCwT0ez7o9JvgpfBp9JGnVb+dPERzXDbugTatzJAJ60VWOhJKifQty85k+jOreoFHER4r5fu062PhPw==
+vue-router@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.1.2.tgz"
+  integrity sha512-5BP1qXFncVRwgV/XnqzsKApdMjQPqWIpoUBdL1ynz8HyLxIX/UDAx7Ql2BjmA5CXT/p61JfZvkpiFWFpaqcfag==
   dependencies:
     "@vue/devtools-api" "^6.1.4"
 
