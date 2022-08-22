@@ -1243,10 +1243,10 @@ tailwindcss@^2.2.19:
     resolve "^1.20.0"
     tmp "^0.2.1"
 
-three-mesh-ui@^6.4.4:
-  version "6.4.4"
-  resolved "https://registry.npmjs.org/three-mesh-ui/-/three-mesh-ui-6.4.4.tgz"
-  integrity sha512-Inzndir7UUQTl7U7isPMQa2H0jCv2G7RgcX3HVMoF5PSrbStAzayLtI6P9tK9rEkcQdehQfGHwpZVxghhuS77Q==
+three-mesh-ui@^6.4.5:
+  version "6.4.5"
+  resolved "https://registry.npmjs.org/three-mesh-ui/-/three-mesh-ui-6.4.5.tgz"
+  integrity sha512-1SJMXBdTT3LrHXgqankC+jQZRcY2tDv6V0Ndl0qCPM7ju7MzmM3wmrHJ8m6doM7B49eIMVs4nOuAlYOMTDgiOw==
 
 three@^0.143.0:
   version "0.143.0"
