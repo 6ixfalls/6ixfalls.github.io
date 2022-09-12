@@ -24,7 +24,7 @@
     "moment": "^2.29.4",
     "postcss": "^8.4.16",
     "tailwindcss": "^2.2.19",
-    "vite": "^2.9.15"
+    "vite": "^3.1.0"
   },
   "resolutions": {
     "postcss": "^8.4.16"
